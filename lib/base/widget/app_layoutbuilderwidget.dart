@@ -48,15 +48,6 @@ class AppLayoutBuilderWidget extends StatelessWidget {
                     ),
                   );
                 }
-                // (index) => SizedBox(
-                //   height: 2,
-                //   width: 5,
-                //   child: DecoratedBox(
-                //     decoration: BoxDecoration(
-                //       color: const Color.fromARGB(255, 255, 255, 255),
-                //     )
-                //   ),
-                // ),
               }
            
         ),

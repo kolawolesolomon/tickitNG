@@ -6,6 +6,8 @@ class TicketViewColumnText extends StatelessWidget {
   final String textTop;
   final String textBottom;
   final CrossAxisAlignment crossalign;
+  final TextAlign bottomTextAlign;
+  final TextAlign topTextAlign;
 
   const TicketViewColumnText(
     {
@@ -13,6 +15,8 @@ class TicketViewColumnText extends StatelessWidget {
       this.textTop = '',
       this.textBottom = '',
       this.crossalign =  CrossAxisAlignment.start,
+      this.topTextAlign = TextAlign.start,
+      this.bottomTextAlign = TextAlign.start,
     }
   );
 
@@ -25,12 +29,15 @@ class TicketViewColumnText extends StatelessWidget {
           ? Text(
             textTop,
             style: AppStyles.headLineStyle3,
+            // textAlign: topTextAlign,
           )
           : SizedBox(),
         textBottom.isNotEmpty
           ? Text(
             textBottom,
             style: AppStyles.headLineStyle4,
+            overflow: TextOverflow.ellipsis,
+            // textAlign: bottomTextAlign,
           )
           : SizedBox()
       ],

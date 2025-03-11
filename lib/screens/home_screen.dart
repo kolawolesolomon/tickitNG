@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart' show FluentIcons;
 import 'package:flutter/material.dart';
+import 'package:ticketng_v1_2/base/utils/appjson.dart';
 import 'package:ticketng_v1_2/base/widget/customappwidget.dart';
 import 'package:ticketng_v1_2/base/resources/app_styles.dart';
 import 'package:ticketng_v1_2/base/widget/ticketview.dart';
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: EdgeInsets.all(10),
             child: Column(
+              spacing: 10,
               crossAxisAlignment: CrossAxisAlignment.start,
               children:[
                 Row(
@@ -50,9 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 40,
-                ),
+              
                 SearchBar(
                   hintText: 'Search',
                   leading: IconButton(
@@ -60,17 +60,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: (){}
                   )
                 ),
-                SizedBox(
-                  height: 40,
-                ),
+
                 AppDoubleText(
                   bigText: 'Upcoming flights',
                   smallText: 'View all',
                 ),
-                SizedBox(
-                  height: 20,
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: 
+                      ticketList.map((mapIdex){
+                        return TicketView(
+                          curMapInfo: mapIdex,
+                          ticketinmainview: true,);
+                      }).toList(),
+                  ),
                 ),
-                Ticketview(),
+                AppDoubleText(
+                  bigText: 'Hot deals',
+                  smallText: 'View all',
+                ),
               ]
             )
           )

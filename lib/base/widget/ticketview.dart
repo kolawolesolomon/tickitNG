@@ -4,8 +4,17 @@ import 'package:ticketng_v1_2/base/widget/bigcircle.dart';
 import 'package:ticketng_v1_2/base/resources/app_styles.dart';
 import 'package:ticketng_v1_2/base/widget/ticketviewcolumntext.dart';
 
-class Ticketview extends StatelessWidget {
-  const Ticketview({super.key});
+class TicketView extends StatelessWidget {
+  final Map<String, dynamic> curMapInfo;
+  final bool? ticketinmainview;
+  
+  const TicketView(
+    {
+      super.key,
+      required this.curMapInfo,
+      this.ticketinmainview = true,
+    }
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +25,7 @@ class Ticketview extends StatelessWidget {
       width: size.width*0.8,
       height:199,
       child: Container(
-        margin: EdgeInsets.only(right: 16.0,),
+        margin: EdgeInsets.only(right: ticketinmainview == true? 16:0,),
         child: Column(
           children: [
             Container(
@@ -29,8 +38,8 @@ class Ticketview extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TicketViewColumnText(
-                      textTop: 'NYC',
-                      textBottom: 'New-York',
+                      textTop: curMapInfo['from']['code'],
+                      textBottom: curMapInfo['from']['name'],
                     ),
                   ),
                   Expanded(
@@ -50,8 +59,8 @@ class Ticketview extends StatelessWidget {
                           ],
                         ),
                         TicketViewColumnText(
-                          crossalign: CrossAxisAlignment.end,
-                          textBottom: '8H : 30M',
+                          crossalign: CrossAxisAlignment.center,
+                          textBottom: curMapInfo['flying_time'],
                         ),
                       ],
                     ),
@@ -59,8 +68,10 @@ class Ticketview extends StatelessWidget {
                   Expanded(
                     child: TicketViewColumnText(
                       crossalign: CrossAxisAlignment.end,
-                      textTop: 'NYC',
-                      textBottom: 'New-York',
+                      textTop: curMapInfo['to']['code'],
+                      textBottom: curMapInfo['to']['name'],
+                      topTextAlign: TextAlign.end,
+                      bottomTextAlign: TextAlign.end,
                     ),
                   ),
                 ],
@@ -73,7 +84,7 @@ class Ticketview extends StatelessWidget {
                 children:[
                   Bigcircle(isRight: false,),
                   Expanded(
-                    child: AppLayoutBuilderWidget(randomDivider: 11,),
+                    child: AppLayoutBuilderWidget(randomDivider: 10,),
                   ),
                   Bigcircle(isRight: true,),
                 ],
@@ -90,17 +101,17 @@ class Ticketview extends StatelessWidget {
                 children: [
                   //Here we are showing departure and destination with icons first line
                   TicketViewColumnText(
-                    textTop: '1 May',
+                    textTop: curMapInfo['date'],
                     textBottom: 'Date',
                   ),
                   TicketViewColumnText(
                     crossalign: CrossAxisAlignment.center,
-                    textTop: '8:00 AM',
+                    textTop: curMapInfo['departure_time'],
                     textBottom: 'Departure time',
                   ),
                   TicketViewColumnText(
                     crossalign: CrossAxisAlignment.end,
-                    textTop: '23',
+                    textTop: curMapInfo['number'],
                     textBottom: 'Number',
                   ),               
                 ],
