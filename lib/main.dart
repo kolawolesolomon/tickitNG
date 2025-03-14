@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ticketng_v1_2/base/bottom_navigation.dart';
+import 'package:ticketng_v1_2/screens/hotelviewallsection.dart';
+import 'package:ticketng_v1_2/screens/view_all_ticket_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -32,7 +35,18 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal.shade900),
         bottomAppBarTheme: BottomAppBarTheme(color: Color(0xFF00796B)), // Correct way to set background
       ),
-      home: const BottomNavigation(),
+
+      routes:{
+        '/':(context){
+          return BottomNavigation();
+        },
+        '/ViewAll': (BuildContext context) {
+          return AllTicketScreen();
+        },
+        '/HotelAll': (BuildContext context) {
+          return HotelSectionViewAll();
+        },
+      },
     );
   }
 }

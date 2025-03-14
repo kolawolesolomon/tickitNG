@@ -4,6 +4,7 @@ import 'package:ticketng_v1_2/base/utils/appjson.dart';
 import 'package:ticketng_v1_2/base/widget/customappwidget.dart';
 import 'package:ticketng_v1_2/base/resources/app_styles.dart';
 import 'package:ticketng_v1_2/base/widget/ticketview.dart';
+import 'package:ticketng_v1_2/screens/hotels.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -64,7 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 AppDoubleText(
                   bigText: 'Upcoming flights',
                   smallText: 'View all',
+                  gotoFunc: () => Navigator.pushNamed(context, '/ViewAll'),
                 ),
+   
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -77,10 +80,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 AppDoubleText(
-                  bigText: 'Hot deals',
+                  bigText: 'Hotels',
                   smallText: 'View all',
+                  gotoFunc: () => Navigator.pushNamed(context, '/HotelAll'),
                 ),
-              ]
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    spacing: 20.0,
+                    children:[
+                      HotelSection(),
+                      HotelSection(),
+                      HotelSection(),
+                      HotelSection(),
+                      HotelSection(),
+                    ]
+                  )
+                )
+,              ]
             )
           )
         ]
